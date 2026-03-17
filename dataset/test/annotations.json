@@ -1,0 +1,32 @@
+{
+  "images": [
+    {
+      "file_name": "frame_1.jpg",
+      "height": 432,
+      "width": 768,
+      "id": 1
+    }
+  ],
+  "annotations": [
+    {
+      "id": 1,
+      "image_id": 1,
+      "category_id": 1,
+      "bbox": [
+        243.5614471435547,
+        107.17117309570312,
+        495.7088165283203,
+        277.5413513183594
+      ],
+      "area": 137579.6947996947,
+      "iscrowd": 0
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "drone",
+      "supercategory": "object"
+    }
+  ]
+}

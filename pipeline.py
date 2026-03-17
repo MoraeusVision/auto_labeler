@@ -5,7 +5,7 @@ from detection_result import DetectionResult
 from save_manager import SaveManager
 
 class AnnotatePipeline:
-    def __init__(self, source, processor, model, prompt, device, conf, show=False, jump_frames=1):
+    def __init__(self, source, processor, model, prompt, device, conf, show=False, jump_frames=1, save_manager=None):
         self.source = source
         self.processor = processor
         self.model = model
@@ -14,7 +14,7 @@ class AnnotatePipeline:
         self.conf = conf
         self.show = show
         self.jump_frames = jump_frames
-        self.save_manager = SaveManager()
+        self.save_manager = save_manager
         
     def run(self):
         print("Running pipeline")
@@ -47,7 +47,7 @@ class AnnotatePipeline:
                     text_labels=results[0]["text_labels"]
                 )
 
-                if det_result:
+                if det_result and self.save_manager:
                     self.save_manager.save(frame, det_result, frame_id)
 
                 if self.show:
