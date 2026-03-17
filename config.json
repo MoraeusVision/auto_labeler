@@ -4,5 +4,6 @@
 	"prompt": "drone.",
 	"show": true,
 	"save": true,
-    "conf": 0.5
+    "conf": 0.5,
+	"jump_frames": 10
 }

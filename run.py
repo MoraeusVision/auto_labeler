@@ -26,7 +26,16 @@ def main():
     dino_processor = AutoProcessor.from_pretrained("IDEA-Research/grounding-dino-tiny")
     dino_model = AutoModelForZeroShotObjectDetection.from_pretrained("IDEA-Research/grounding-dino-tiny").to(device)
 
-    pipeline = AnnotatePipeline(source, dino_processor, dino_model, config["prompt"], device)
+    pipeline = AnnotatePipeline(
+        source=source,
+        processor=dino_processor,
+        model=dino_model,
+        prompt=config["prompt"],
+        device=device,
+        conf=config["conf"],
+        show=config["show"],
+        jump_frames=config["jump_frames"]
+    )
 
     cleanup = CleanupManager()
     if source:
