@@ -1,0 +1,8 @@
+{
+	"source": "example_media/drones/vid_drone2.mp4",
+	"model_path": "",
+	"prompt": "drone.",
+	"show": true,
+	"save": true,
+    "conf": 0.5
+}
