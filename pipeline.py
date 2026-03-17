@@ -2,6 +2,7 @@ import torch
 import cv2
 from visualizer import Visualizer
 from detection_result import DetectionResult
+from save_manager import SaveManager
 
 class AnnotatePipeline:
     def __init__(self, source, processor, model, prompt, device, conf, show=False, jump_frames=1):
@@ -13,6 +14,7 @@ class AnnotatePipeline:
         self.conf = conf
         self.show = show
         self.jump_frames = jump_frames
+        self.save_manager = SaveManager()
         
     def run(self):
         print("Running pipeline")
@@ -45,6 +47,8 @@ class AnnotatePipeline:
                     text_labels=results[0]["text_labels"]
                 )
 
+                if det_result:
+                    self.save_manager.save(frame, det_result, frame_id)
 
                 if self.show:
                     vis_frame = Visualizer.draw_detections(frame.copy(), det_result.boxes, det_result.labels, det_result.scores)
