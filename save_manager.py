@@ -6,7 +6,7 @@ import logging
 
 class SaveManager:
 
-    def __init__(self, dataset_dir="dataset"):
+    def __init__(self, dataset_dir="dataset", prompt=None):
         # Dataset structure
         self.dataset_dir = dataset_dir
 
@@ -30,7 +30,7 @@ class SaveManager:
         self.categories = [
             {
                 "id": 1,
-                "name": "drone",
+                "name": prompt,
                 "supercategory": "object"
             }
         ]

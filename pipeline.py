@@ -3,6 +3,7 @@ import cv2
 from visualizer import Visualizer
 from detection_result import DetectionResult
 from save_manager import SaveManager
+from frame_processing import box_aspect_ratio_filter, box_size_filter
 
 class AnnotatePipeline:
     def __init__(self, source, processor, model, prompt, device, conf, show=False, jump_frames=1, save_manager=None):
@@ -49,7 +50,8 @@ class AnnotatePipeline:
                 )
                 
                 if det_result.boxes.size > 0 and self.save_manager:
-                    self.save_manager.save(frame, det_result, frame_id)
+                    postprocessed_results = self.postprocess(det_results=det_result, frame=frame)
+                    self.save_manager.save(frame, postprocessed_results, frame_id)
 
                 if self.show:
                     vis_frame = Visualizer.draw_detections(frame.copy(), det_result.boxes, det_result.labels, det_result.scores)
@@ -57,3 +59,10 @@ class AnnotatePipeline:
                     if key == ord('q'):
                         break
                 
+    def preprocess(self):
+        pass
+
+    def postprocess(self, det_results, frame):
+        det_results = box_aspect_ratio_filter(det_results, max_ratio_deviation=0.2)
+        det_results = box_size_filter(det_results, frame.shape, min_area_ratio=0.01, max_area_ratio=0.3)
+        return det_results

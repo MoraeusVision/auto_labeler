@@ -4,6 +4,6 @@
 	"show": true,
 	"save": true,
     "conf": 0.2,
-	"jump_frames": 2,
+	"jump_frames": 20,
 	"reset_dataset_dir" : true
 }

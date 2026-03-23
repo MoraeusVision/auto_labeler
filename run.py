@@ -25,7 +25,7 @@ def main():
 
     source = SourceFactory.create(source_path=config["source"])
     visualizer = Visualizer()
-    save_manager = SaveManager()
+    save_manager = SaveManager(prompt=config["prompt"])
 
     dino_processor = AutoProcessor.from_pretrained("IDEA-Research/grounding-dino-base")
     dino_model = AutoModelForZeroShotObjectDetection.from_pretrained("IDEA-Research/grounding-dino-base").to(device)
