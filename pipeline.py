@@ -25,8 +25,9 @@ class AnnotatePipeline:
             if frame is None:
                 break
             
+            # Skips frames to get more diverse dataset. Always start with frame 1.
             if frame_id % self.jump_frames == 0 or frame_id == 1:
-                print(frame_id)
+                
                 inputs = self.processor(images=frame, text=self.prompt, return_tensors="pt").to(self.device)
 
                 with torch.no_grad():
@@ -46,8 +47,8 @@ class AnnotatePipeline:
                     labels=results[0]["labels"],
                     text_labels=results[0]["text_labels"]
                 )
-
-                if det_result and self.save_manager:
+                
+                if det_result.boxes.size > 0 and self.save_manager:
                     self.save_manager.save(frame, det_result, frame_id)
 
                 if self.show:

@@ -1,10 +1,9 @@
 {
-	"source": "example_media/drones/vid_drone2.mp4",
-	"model_path": "",
-	"prompt": "drone.",
+	"source": "example_media/conveyor_lime.mp4",
+	"prompt": "lime.",
 	"show": true,
 	"save": true,
-    "conf": 0.5,
-	"jump_frames": 10,
+    "conf": 0.2,
+	"jump_frames": 2,
 	"reset_dataset_dir" : true
 }

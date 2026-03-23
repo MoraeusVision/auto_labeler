@@ -27,8 +27,8 @@ def main():
     visualizer = Visualizer()
     save_manager = SaveManager()
 
-    dino_processor = AutoProcessor.from_pretrained("IDEA-Research/grounding-dino-tiny")
-    dino_model = AutoModelForZeroShotObjectDetection.from_pretrained("IDEA-Research/grounding-dino-tiny").to(device)
+    dino_processor = AutoProcessor.from_pretrained("IDEA-Research/grounding-dino-base")
+    dino_model = AutoModelForZeroShotObjectDetection.from_pretrained("IDEA-Research/grounding-dino-base").to(device)
 
     pipeline = AnnotatePipeline(
         source=source,
