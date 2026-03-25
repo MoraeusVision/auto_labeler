@@ -3,7 +3,7 @@
 	"prompt": "lime.",
 	"show": true,
 	"save": true,
-    "conf": 0.2,
+    "conf": 0.4,
 	"jump_frames": 20,
 	"reset_dataset_dir" : true
 }

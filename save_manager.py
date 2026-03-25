@@ -80,7 +80,7 @@ class SaveManager:
                 "image_id": image_id,
                 "category_id": 1,
                 "bbox": [x0, y0, width_box, height_box],
-                "area": width_box * height_box,
+                "area": int(width_box * height_box),
                 "iscrowd": 0
             })
 
